@@ -1,5 +1,7 @@
 // TODO: Include packages needed for this application
+const fs = require("fs");
 const inquirer = require('inquirer');
+const generateMarkdown = require("./utils/generateMarkdown");
 
 // TODO: Create an array of questions for user input
 const questions = ["Proyect Name: ", "Description: ", "Contents: ", "Installation: ", "Usage: ", "License: ", "Contributing: ", "Tests: ", "Questions: "];
@@ -55,7 +57,9 @@ function init() {
     }
   ])
   .then((answers) => {
-    writeToFile("readMe.md", JSON.stringify(answers))
+    const jsonAnsw = console.log(JSON.stringify(answers));
+    generateMarkdown(answers);
+    writeToFile("README.md", jsonAnsw);
   })
   .catch((error) => {
     if (error.isTtyError) {
