@@ -7,7 +7,9 @@ const generateMarkdown = require("./utils/generateMarkdown");
 const questions = ["Proyect Name: ", "Description: ", "Contents: ", "Installation: ", "Usage: ", "License: ", "Contributing: ", "Tests: ", "Questions: "];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+  generateMarkdown(fileName, data);
+}
 
 // TODO: Create a function to initialize app
 function init() {
@@ -54,8 +56,7 @@ function init() {
   ])
   .then((answers) => {
     const jsonAnsw = JSON.stringify(answers);
-    const generateREADME = generateMarkdown(jsonAnsw);
-    writeToFile("README.md", generateREADME);
+    writeToFile("README.md", jsonAnsw);
   })
   .catch((error) => {
     if (error.isTtyError) {
