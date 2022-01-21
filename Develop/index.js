@@ -40,10 +40,6 @@ function init() {
       message: questions[5]
     },
     {
-      name:"license",
-      message: questions[5]
-    },
-    {
       name:"contributing",
       message: questions[6]
     },
@@ -57,9 +53,9 @@ function init() {
     }
   ])
   .then((answers) => {
-    const jsonAnsw = console.log(JSON.stringify(answers));
-    generateMarkdown(answers);
-    writeToFile("README.md", jsonAnsw);
+    const jsonAnsw = JSON.stringify(answers);
+    const generateREADME = generateMarkdown(jsonAnsw);
+    writeToFile("README.md", generateREADME);
   })
   .catch((error) => {
     if (error.isTtyError) {
