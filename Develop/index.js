@@ -56,13 +56,14 @@ function init() {
   ])
   .then((answers) => {
     const jsonAnsw = JSON.stringify(answers);
-    writeToFile("README.md", jsonAnsw);
+    writeToFile("README.md", "this is text");
+    console.log("File Created!")
   })
   .catch((error) => {
     if (error.isTtyError) {
       console.log("Error. Try again.")
     } else {
-      console.log("Error. We couldn't process your request")
+      console.log(error, "Error. We couldn't process your request")
     }
   });
 
