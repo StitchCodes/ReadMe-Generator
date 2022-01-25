@@ -1,5 +1,5 @@
 // TODO: Include packages needed for this application
-const fs = require("fs");
+const fs = require('fs');
 const inquirer = require('inquirer');
 const generateMarkdown = require("./utils/generateMarkdown");
 
@@ -8,7 +8,9 @@ const questions = ["Proyect Name: ", "Description: ", "Contents: ", "Installatio
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-  generateMarkdown(fileName, data);
+  fs.writeFile(fileName, data, (err) =>
+  err ? console.error(err) : console.log('Success!')
+  );
 }
 
 // TODO: Create a function to initialize app
@@ -55,9 +57,9 @@ function init() {
     }
   ])
   .then((answers) => {
-    const jsonAnsw = JSON.stringify(answers);
-    writeToFile("README.md", "this is text");
-    console.log("File Created!")
+    const res = JSON.stringify(answers);
+    writeToFile("README.md", res);
+    generateMarkdown(res);
   })
   .catch((error) => {
     if (error.isTtyError) {
@@ -68,6 +70,11 @@ function init() {
   });
 
 }
+
+// 
+// fs.writeFile('log.txt', process.argv[2], (err) =>
+//   err ? console.error(err) : console.log('Success!')
+// );
 
 // Function call to initialize app
 init();
