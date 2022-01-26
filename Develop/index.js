@@ -69,10 +69,5 @@ function init() {
 
 }
 
-// 
-// fs.writeFile('log.txt', process.argv[2], (err) =>
-//   err ? console.error(err) : console.log('Success!')
-// );
-
 // Function call to initialize app
 init();
