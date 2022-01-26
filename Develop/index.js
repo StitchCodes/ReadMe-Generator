@@ -8,7 +8,7 @@ const questions = ["Proyect Name: ", "Description: ", "Contents: ", "Installatio
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-  fs.writeFile(fileName, data, (err) =>
+  fs.writeFile(fileName, generateMarkdown(data), (err) =>
   err ? console.error(err) : console.log('Success!')
   );
 }
@@ -57,9 +57,7 @@ function init() {
     }
   ])
   .then((answers) => {
-    const res = JSON.stringify(answers);
-    writeToFile("README.md", res);
-    generateMarkdown(res);
+    writeToFile("README.md", answers);
   })
   .catch((error) => {
     if (error.isTtyError) {
